@@ -1,0 +1,419 @@
+{% extends 'Admin/Head.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Registration</title>
+    <style>
+        :root {
+            --primary: #3a86ff;
+            --primary-dark: #2667cc;
+            --primary-light: rgba(58, 134, 255, 0.1);
+            --secondary: #8338ec;
+            --accent: #ff006e;
+            --bg: #0a192f;
+            --card-bg: #172a45;
+            --text: #ccd6f6;
+            --text-light: #a8b2d1;
+            --shadow-color: rgba(2, 12, 27, 0.7);
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-title {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(10, 25, 47, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--card-bg);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 500;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(23, 42, 69, 0.5);
+        }
+
+        tr:hover {
+            background-color: rgba(58, 134, 255, 0.1);
+        }
+
+        .action-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .action-link.delete {
+            color: var(--accent);
+        }
+
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .flex-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .flex-left {
+            flex: 1;
+        }
+
+        .flex-right {
+            flex: 2;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-input-wrapper input[type="file"] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .file-input-btn {
+            display: inline-block;
+            padding: 12px 15px;
+            background: rgba(10, 25, 47, 0.5);
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .file-input-btn:hover {
+            border-color: var(--primary);
+        }
+
+        .center-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -7px;
+        }
+
+        #imagePreview {
+            margin-top: 10px;
+            display: none;
+        }
+
+        #preview {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .profile-img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flex-container">
+            <div class="flex-left">
+                <div class="card">
+                    <h2 class="card-title">Register New HR</h2>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="txt_name">Full Name</label>
+                            <input type="text" name="txt_name" id="txt_name" class="form-control" required>
+                            <div id="name-error" class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_email">Email Address</label>
+                            <input type="email" name="txt_email" id="txt_email" class="form-control" required>
+                            <div id="email-error" class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_password">Password</label>
+                            <input type="password" name="txt_password" id="txt_password" class="form-control" required>
+                            <div id="password-error" class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_file">Profile Photo</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" name="txt_photo" id="txt_photo" class="form-control" onchange="previewImage(this)">
+                                <div class="file-input-btn" id="fileInputLabel">
+                                    <i class="fas fa-cloud-upload-alt"></i> Choose a file
+                                </div>
+                            </div>
+                            <div id="imagePreview">
+                                <img id="preview" src="#" alt="Image Preview">
+                            </div>
+                            <div id="photo-error" class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn">Add HR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="flex-right">
+                <div class="card">
+                    <h2 class="card-title">HR List</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Photo</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in hr %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>
+                                        {% if i.hr_photo %}
+                                        <img src="{{ i.hr_photo.url }}" alt="Profile Photo" class="profile-img">
+                                        {% else %}
+                                        <img src="{% static 'Admin/assets/images/default-profile.png' %}" alt="Default Profile" class="profile-img">
+                                        {% endif %}
+                                    </td>
+                                    <td>{{i.hr_name}}</td>
+                                    <td>{{i.hr_email}}</td>
+                                    <td>
+                                        <a href="{% url 'Admin:deletehr' i.id %}" class="action-link delete">Delete</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="center-button">
+            <button onclick="goToHomepage()" class="btn">
+                <i class="fas fa-home"></i> Go to Homepage
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function goToHomepage() {
+            window.location.href = "http://127.0.0.1:8000/Admin/homepage/";
+        }
+
+        function previewImage(input) {
+            const fileInputLabel = document.getElementById('fileInputLabel');
+            const imagePreview = document.getElementById('imagePreview');
+            const preview = document.getElementById('preview');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    fileInputLabel.innerHTML = '<i class="fas fa-check-circle"></i> ' + input.files[0].name;
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Form validation
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            let valid = true;
+
+            // Name validation
+            const name = document.getElementById('txt_name');
+            const nameError = document.getElementById('name-error');
+            if (name.value.trim().split(' ').length < 2) {
+                nameError.textContent = 'Full name must contain at least first and last name.';
+                valid = false;
+            } else {
+                nameError.textContent = '';
+            }
+
+            // Email validation
+            const email = document.getElementById('txt_email');
+            const emailError = document.getElementById('email-error');
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailRegex.test(email.value.trim())) {
+                emailError.textContent = 'Please enter a valid email address (e.g., user@domain.com).';
+                valid = false;
+            } else {
+                emailError.textContent = '';
+            }
+
+            // Password validation
+            const password = document.getElementById('txt_password');
+            const passwordError = document.getElementById('password-error');
+            const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+            if (!passwordRegex.test(password.value.trim())) {
+                passwordError.textContent = 'Password must contain at least 8 characters, one letter, one number, and one symbol.';
+                valid = false;
+            } else {
+                passwordError.textContent = '';
+            }
+
+            // Photo validation
+            const photo = document.getElementById('txt_photo');
+            const photoError = document.getElementById('photo-error');
+            if (photo.files.length === 0) {
+                photoError.textContent = 'Profile photo is required.';
+                valid = false;
+            } else {
+                photoError.textContent = '';
+            }
+
+            if (!valid) {
+                event.preventDefault();
+            }
+   
+
+        });
+  
+    </script>
+          {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+                  <li class="message">{{ message }}</li>
+              {% endfor %}
+          </ul>
+      {% endif %}
+      
+        </form>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</body>
+</html>
+{% endblock content %}
