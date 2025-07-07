@@ -1,0 +1,75 @@
+{%load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>HumanResources &mdash; Free Business Website Template by Colorlib</title>
+  <link rel="stylesheet" href="{% static 'Main/css/style.css' %}">
+</head>
+<body>
+
+  <div class="js-animsition animsition" id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out">
+
+
+    <header class="templateux-navbar" role="banner" style="background-color: black;">
+
+      <div class="container"  data-aos="fade-down">
+        <div class="row">
+
+          <div class="col-3 templateux-logo">
+            <a href="index.html" class="animsition-link">HumanResources</a>
+          </div>
+          <nav class="col-9 site-nav">
+            <button class="d-block d-md-none hamburger hamburger--spin templateux-toggle templateux-toggle-light ml-auto templateux-toggle-menu" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button> <!-- .templateux-toggle -->
+
+            <ul class="sf-menu templateux-menu d-none d-md-block">
+              <li class="active">
+                <a href="{% url 'HR:homepage' %}" class="animsition-link">Home</a>
+              </li>
+              <li><a href="{% url 'HR:profile' %}" class="animsition-link">Profile</a></li>
+              <li>
+                <a >Others</a>
+                <ul>
+                  <li><a href="{% url 'HR:viewsalary' %}">View Salary</a></li>
+                  <li><a href="{% url 'HR:viewattendence' %}">View Attendence</a></li>
+                  <li><a href="{% url 'HR:viewleaverequest' %}">View Leave Request</a></li>
+                  <li><a href="{% url 'HR:role' %}">Role</a></li>
+                  <li><a href="{% url 'HR:complaints' %}" class="animsition-link">Complaint</a></li>
+                  <!-- <li>
+                    <a href="#">HR Management</a>
+                    <ul>
+                      <li><a href="#">Operational Management</a></li>
+                      <li><a href="#">Corporate Program</a></li>
+                      <li>
+                        <a href="#">Service 3</a>
+                        <ul>
+                          <li><a href="#">Service 1</a></li>
+                          <li><a href="#">Service 2</a></li>
+                          <li><a href="#">Service 3</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li> -->
+                </ul>
+              </li>
+              <li><a href="{% url 'HR:viewemployee' %}" class="animsition-link">Employees</a></li>
+              <li><a href="{% url 'HR:employee' %}" class="animsition-link">Employee Registration</a></li>
+            </ul> <!-- .templateux-menu -->
+
+          </nav> <!-- .site-nav -->
+          
+
+        </div> <!-- .row -->
+      </div> <!-- .container -->
+    </header> <!-- .templateux-navba -->
+{% block content %}
+{% endblock content %}
+<script src="{% static 'Main/js/scripts-all.js' %}"></script>
+<script src="{% static 'Main/js/main.js' %}"></script>
+
+</body>
+</html>

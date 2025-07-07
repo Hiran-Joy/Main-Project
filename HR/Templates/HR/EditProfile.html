@@ -1,0 +1,120 @@
+{% extends 'HR/Head.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+        }
+        td {
+            padding: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="form-container">
+            <h2>Edit Profile</h2>
+            <form action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" name="txt_name" value="{{ hr.hr_name }}" id="txt_name" required pattern="^([A-Za-z]+[ ]{1}[A-Za-z]+)+$" title="Full name required with at least first and last name"></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" name="txt_email" value="{{ hr.hr_email }}" id="txt_email" required></td>
+                    </tr>
+                    <tr>
+                        <td>Photo</td>
+                        <td><input type="file" name="txt_photo" id="txt_photo" accept="image/*" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" value="Update"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div style="text-align: center;"><a href="http://127.0.0.1:8000/HR/profile/" class="btn btn-primary animsition-link">Back</a></div>
+
+    <script>
+        function validateForm() {
+            // Name Validation
+            var name = document.getElementById("txt_name").value;
+            var namePattern = /^([A-Za-z]+[ ]{1}[A-Za-z]+)+$/;
+            if (!namePattern.test(name)) {
+                alert("Full Name must contain at least first and last name.");
+                return false;
+            }
+
+            // Email Validation
+            var email = document.getElementById("txt_email").value;
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email (e.g., user@domain.com).");
+                return false;
+            }
+
+            // Photo Validation
+            var photo = document.getElementById("txt_photo").files[0];
+            if (!photo) {
+                alert("Please upload a profile photo.");
+                return false;
+            }
+            var fileType = photo.type.split('/')[0];
+            if (fileType !== "image") {
+                alert("The profile photo must be an image file.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+{% endblock content %}

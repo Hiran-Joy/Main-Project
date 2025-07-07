@@ -1,0 +1,138 @@
+{% extends 'HR/Head.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .complaint-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #007BFF;
+            color: white;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+        input[type="submit"]:hover {
+            background: #0056b3;
+        }
+        .no-reply {
+            color: red;
+        }
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding-top: 200px;
+        }
+        .btn {
+            padding: 6px 12px;
+            margin: 2px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .btn-primary {
+            background-color: #007BFF;
+            color: white;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <table border="1" class="complaint-container">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>Employee ID</th>
+                <th>Role</th>
+                <th>Photo</th>
+                <th>Action</th>
+            </tr>
+            {% for i in emp %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.employee_name }}</td>
+                <td>{{ i.employee_email }}</td>
+                <td>{{ i.employee_contact }}</td>
+                <td>{{ i.employee_address }}</td>
+                <td>{{ i.employee_idnumber }}</td>
+                <td>{{ i.role.role_name }}</td>
+                <td><img src="{{ i.employee_photo.url }}" width="150" alt=""></td>
+                <td>
+                    <a href="{% url 'HR:addattendence' i.id %}" class="btn btn-primary">Add Attendance</a><br>
+                    <a href="{% url 'HR:addsalary' i.id %}" class="btn btn-primary">Add Salary</a><br>
+                    <a href="{% url 'HR:deleteemployee' i.id %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this employee?');">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    {% if msg %}
+    <script>
+        alert("{{ msg }}");
+        window.location = "{% url 'HR:viewemployee' %}";
+    </script>
+    {% endif %}
+    <div style="text-align: center;"><a href="http://127.0.0.1:8000/HR/homepage/" class="btn btn-primary animsition-link">Back</a></div>
+
+</body>
+</html>
+{% endblock content %}
