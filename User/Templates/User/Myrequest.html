@@ -1,0 +1,51 @@
+{% extends 'User/Head.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center my-4">My Request</h2>
+    {% if jobs %}
+    <div class="row">
+        {% for job in jobs %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Job Posting #{{ forloop.counter }}</h5>
+                    <div class="card-text mb-3">
+                        <p>{{ job.recruitment.recruitment_content }}</p>
+                        <div class="job-details">
+                            <p><strong>Posted On:</strong> {{ job.recruitment.recruitment_date }}</p>
+                            <p><strong>Apply Before:</strong> {{ job.recruitment.recruitment_lastdate }}</p>
+                            
+                            <p><strong>Status:</strong> 
+                                {% if job.request_status == 1 %}
+                                Accepted
+                                {% elif job.request_status == 2 %}
+                                Rejected
+                                {% else %}
+                                Pending
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <h4 class="alert-heading">No Current Openings</h4>
+        <p>There are no job openings at this time. Please check back later.</p>
+    </div>
+    {% endif %}
+</body>
+</html>
+{% endblock content %}

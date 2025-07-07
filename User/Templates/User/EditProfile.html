@@ -1,0 +1,169 @@
+{% extends 'User/Head.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-container {
+            padding-top: 40px; /* Added space above the form */
+        }
+
+        .form-container {
+            background: white;
+            padding: 90px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #000;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        td {
+            padding: 10px 0;
+            font-size: 16px;
+            color: #555;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .action-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .action-links a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 14px;
+        }
+
+        .action-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container"> <!-- Added wrapper div -->
+        <div class="form-container">
+            <h2>Edit Profile</h2>
+            <form action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>Full Name</td>
+                        <td><input type="text" name="txt_name" value="{{ user.user_name }}" required id="fullName"></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" name="txt_email" value="{{ user.user_email }}" required id="email"></td>
+                    </tr>
+                    <tr>
+                        <td>Profile Photo</td>
+                        <td><input type="file" name="txt_photo" required id="photo"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <input type="submit" value="Update">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="action-links">
+                <a href="{% url 'User:user_profile' %}">Back to Profile</a>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var fullName = document.getElementById("fullName").value;
+            var contactNumber = document.getElementById("contactNumber").value;
+            var email = document.getElementById("email").value;
+            var photo = document.getElementById("photo").value;
+            
+            // Full Name Validation: Should contain at least two words
+            if (fullName.trim().split(" ").length < 2) {
+                alert("Full Name must contain at least a first and last name.");
+                return false;
+            }
+
+            // Contact Number Validation: Must be exactly 10 digits
+            var contactRegex = /^[0-9]{10}$/;
+            if (!contactRegex.test(contactNumber)) {
+                alert("Contact Number must be 10 digits.");
+                return false;
+            }
+
+            // Email Validation: Should be a valid email format
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Profile Photo Validation: Must be an image file
+            var fileExtension = photo.split('.').pop().toLowerCase();
+            if (fileExtension !== 'jpg' && fileExtension !== 'jpeg' && fileExtension !== 'png' && fileExtension !== 'gif') {
+                alert("Please upload a valid image file (JPG, JPEG, PNG, GIF).");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+{% endblock content %}
