@@ -1,0 +1,72 @@
+{%load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>HumanResources &mdash; Free Business Website Template by Colorlib</title>
+  <link rel="stylesheet" href="{% static 'Main/css/style.css' %}">
+</head>
+<body>
+
+  <div class="js-animsition animsition" id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out">
+
+
+    <header class="templateux-navbar" role="banner" style="background-color: black;">
+
+      <div class="container"  data-aos="fade-down">
+        <div class="row">
+
+          <div class="col-3 templateux-logo">
+            <a href="index.html" class="animsition-link">HumanResources</a>
+          </div>
+          <nav class="col-9 site-nav">
+            <button class="d-block d-md-none hamburger hamburger--spin templateux-toggle templateux-toggle-light ml-auto templateux-toggle-menu" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button> <!-- .templateux-toggle -->
+
+            <ul class="sf-menu templateux-menu d-none d-md-block">
+              <li class="active">
+                <a href="http://127.0.0.1:8000/login/" class="animsition-link">Log Out</a>
+              </li>
+              <li><a href="{% url 'HR:profile' %}" class="animsition-link">Profile</a></li>
+              <li>
+                <a>Others</a> 
+                <ul>
+                  <li><a href="{% url 'HR:viewsalary' %}">View Salary</a></li>
+                  <li><a href="{% url 'HR:viewattendence' %}">View Attendence</a></li>
+                  <li><a href="{% url 'HR:viewleaverequest' %}">View Leave Request</a></li>
+                  <li><a href="{% url 'HR:role' %}">Role</a></li>
+                  <li><a href="{% url 'HR:complaints' %}" class="animsition-link">Complaint</a></li>
+                </ul>
+              </li>
+              <li><a href="{% url 'HR:viewemployee' %}" class="animsition-link">Employees</a></li>
+              <li><a href="{% url 'HR:employee' %}" class="animsition-link">Employee Registration</a></li>
+              <li><a href="{% url 'HR:contentpage' %}" class="animsition-link">Job Posting</a></li>
+            </ul> <!-- .templateux-menu -->
+
+          </nav> <!-- .site-nav -->
+          
+
+        </div> <!-- .row -->
+      </div> <!-- .container -->
+    </header> <!-- .templateux-navba -->
+    <div class="templateux-cover" style="background-image: url(/Guest/static/Main/images/hero_1.jpg);">
+        <div class="container">
+          <div class="row align-items-lg-center">
+  
+            <div class="col-lg-6 order-lg-1">
+              <h1 class="heading mb-3 text-white" data-aos="fade-up">We Are Your Partners in <strong>Human Resource</strong></h1>
+              <p class="lead mb-5 text-white" data-aos="fade-up"  data-aos-delay="100">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <!-- <p data-aos="fade-up" data-aos-delay="200"><a href="#" class="btn btn-primary py-3 px-4 mr-3">Get Started</a> <a href="#" class="text-white">Learn More</a></p> -->
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <script src="{% static 'Main/js/scripts-all.js' %}"></script>
+<script src="{% static 'Main/js/main.js' %}"></script>
+
+</body>
+</html>

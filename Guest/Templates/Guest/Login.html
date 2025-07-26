@@ -1,0 +1,129 @@
+{% extends 'Guest/Head.html' %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #0a192f !important;
+    }
+
+    .login-card {
+        background-color: #172a45;
+        color: #ccd6f6;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(2, 12, 27, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .login-card .card-header {
+        background-color: transparent;
+        border-bottom: 2px solid #3a86ff;
+    }
+
+    .login-card .card-header h3 {
+        color: #3a86ff;
+        font-weight: 600;
+    }
+
+    .login-card .form-group label {
+        font-weight: 500;
+        color: #ccd6f6;
+    }
+
+    .login-card .form-control {
+        background-color: rgba(10, 25, 47, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ccd6f6;
+    }
+
+    .login-card .form-control:focus {
+        border-color: #3a86ff;
+        box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.3);
+    }
+
+    .login-card .btn-primary {
+        background: linear-gradient(45deg, #3a86ff, #8338ec);
+        border: none;
+        box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
+        font-weight: 500;
+    }
+
+    .login-card .btn-primary:hover {
+        background: linear-gradient(45deg, #8338ec, #3a86ff);
+        transform: translateY(-2px);
+    }
+
+    .logout-btn {
+    text-align: center; /* centers inline elements inside */
+    margin-top: 20px; /* optional spacing */
+}
+
+.logout-btn .btn {
+    background: linear-gradient(45deg, #3a86ff, #8338ec);
+    border: none;
+    box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
+    font-weight: 500;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+    display: inline-block; /* ensure it’s inline for text-align to work */
+}
+
+
+    .logout-btn .btn:hover {
+        background: linear-gradient(45deg, #8338ec, #3a86ff);
+        transform: translateY(-2px);
+        color: #fff;
+    }
+
+    .custom-margin-top {
+        margin-top: 135px;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card login-card custom-margin-top">
+                <div class="card-header text-center">
+                    <h3>Login</h3>
+                </div>
+                <div class="card-body">
+                    <form id="loginForm" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="txt_email">Email</label>
+                            <input type="email" name="txt_email" id="txt_email" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_password">Password</label>
+                            <input type="password" name="txt_password" id="txt_password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </div>
+                        <div class="text-center">
+                            <a href="{% url 'Guest:userregister' %}">Register as User</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="logout-btn">
+                <a href="/" class="btn btn-primary custom-btn">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        const email = document.getElementById('txt_email').value.trim();
+        const password = document.getElementById('txt_password').value.trim();
+
+        if (email === '' || password === '') {
+            event.preventDefault();
+            alert('Please fill in both Email and Password.');
+        }
+    });
+</script>
+{% endblock content %}

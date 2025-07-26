@@ -1,0 +1,66 @@
+{% extends 'HR/Head.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container-main{
+            padding-top: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-main">
+        <h2 class="text-center my-4">Request</h2>
+    {% if jobs %}
+    <div class="row">
+        {% for job in jobs %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Job Posting #{{ forloop.counter }}</h5>
+                    <div class="card-text mb-3">
+                        <p>{{ job.recruitment.recruitment_content }}</p>
+                        <div class="job-details">
+                            <p><strong>Posted On:</strong> {{ job.recruitment.recruitment_date }}</p>
+                            <p><strong>Apply Before:</strong> {{ job.recruitment.recruitment_lastdate }}</p>
+                            
+                            <p><strong>Status:</strong> 
+                                <p>{{ job.user.user_name }}</p>
+                                <p><img src="{{job.user.user_photo.url}}" width="140"></p>
+                                <p>{{ job.user.user_email }}</p>
+
+
+
+
+                                {% if job.request_status == 1 %}
+                                Accepted
+                                {% elif job.request_status == 2 %}
+                                Rejected
+                                {% else %}
+                                <a href="{% url 'HR:verifyreqest' job.id 1 id %}">Accept</a>
+                                <a href="{% url 'HR:verifyreqest' job.id 2 id %}">Reject</a>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <h4 class="alert-heading">No Current Openings</h4>
+        <p>There are no job openings at this time. Please check back later.</p>
+    </div>
+    {% endif %}
+    <div style="text-align: center;"><a href="http://127.0.0.1:8000/HR/content/" class="btn btn-primary animsition-link">Back</a></div>
+
+</body>
+</html>
+{% endblock content %}

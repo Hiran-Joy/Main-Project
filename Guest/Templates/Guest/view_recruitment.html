@@ -1,0 +1,63 @@
+{% extends 'User/Head.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center my-4">Current Job Opportunities</h2>
+    
+    {% if jobs %}
+    <div class="row">
+        {% for job in jobs %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Job Posting #{{ forloop.counter }}</h5>
+                    <div class="card-text mb-3">
+                        <p>{{ job.recruitment_content }}</p>
+                        <div class="job-details">
+                            <p><strong>Posted On:</strong> {{ job.recruitment_date }}</p>
+                            <p><strong>Apply Before:</strong> {{ job.recruitment_lastdate }}</p>
+                            {% comment %} Calculate days remaining {% endcomment %}
+                            <p><strong>Days Remaining:</strong> 
+                                {{ job.recruitment_lastdate|timeuntil:today }}
+                            </p>
+                        </div>
+                    </div>
+                    <a href="{% url 'User:sendrequest' job.id %}" class="btn btn-primary">
+                        Apply Now
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <h4 class="alert-heading">No Current Openings</h4>
+        <p>There are no job openings at this time. Please check back later.</p>
+    </div>
+    {% endif %}
+</div>
+
+{% if msg %}
+<script>
+    alert("{{msg}}")
+    window.location = "{% url 'User:view_recruitments' %}"
+</script>
+{% endif %}
+<style>
+    .card {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+    .card:hover {
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .job-details {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+</style>
+{% endblock %}

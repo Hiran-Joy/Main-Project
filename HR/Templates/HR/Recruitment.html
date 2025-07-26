@@ -1,0 +1,90 @@
+{% extends 'HR/Head.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Content Management</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .custom-margin-top {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <br><br><br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card custom-margin-top">
+                    <div class="card-header text-center">
+                        <h3>Add Content</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="txt_content">Content</label>
+                                <textarea name="txt_content" id="txt_content" class="form-control" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="txt_lastdate">Last Date</label>
+                                <input type="date" name="txt_lastdate" id="txt_lastdate" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="row">
+            <div class="col">
+                <h4 class="text-center">Content List</h4>
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Content</th>
+                            <th>Last Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in contents %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.recruitment_content }}</td>
+                            <td>{{ i.recruitment_lastdate }}</td>
+                            <td><a href="{% url 'HR:deletecontent' i.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{% url 'HR:viewrequest' i.id %}" class="btn btn-danger btn-sm">View Request</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center">No content available.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {% if msg %}
+    <script>
+        alert("{{ msg }}");
+        window.location = "{% url 'HR:contentpage' %}";
+    </script>
+    {% endif %}
+    <div style="text-align: center;"><a href="http://127.0.0.1:8000/HR/homepage/" class="btn btn-primary animsition-link">Back</a></div>
+
+</body>
+</html>
+{% endblock content %}

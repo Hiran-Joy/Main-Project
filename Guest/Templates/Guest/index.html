@@ -1,0 +1,527 @@
+{%load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>HumanResources &mdash; Free Business Website Template by Colorlib</title>
+  <link rel="stylesheet" href="{% static 'Main/css/style.css' %}">
+</head>
+<body>
+
+  <div class="js-animsition animsition" id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out">
+
+
+    <header class="templateux-navbar" role="banner">
+
+      <div class="container"  data-aos="fade-down">
+        <div class="row">
+
+          <div class="col-3 templateux-logo">
+            <a>HumanResources</a>
+          </div>
+          <nav class="col-9 site-nav">
+            <button class="d-block d-md-none hamburger hamburger--spin templateux-toggle templateux-toggle-light ml-auto templateux-toggle-menu" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button> <!-- .templateux-toggle -->
+
+            <ul class="sf-menu templateux-menu d-none d-md-block">
+              <li class="active">
+                <a href="{% url 'Guest:index' %}" class="animsition-link">Home</a>
+              </li>
+              <li>
+                <a href="{% url 'Guest:login' %}" class="animsition-link">Recruitment</a>
+              </li>
+              <!-- <li><a href="about.html" class="animsition-link">About</a></li>
+              <li>
+                <a href="services.html" class="animsition-link">Services</a>
+                <ul>
+                  <li><a href="#">HR Consulting</a></li>
+                  <li><a href="#">Leadership Training</a></li>
+                  <li>
+                    <a href="#">HR Management</a>
+                    <ul>
+                      <li><a href="#">Operational Management</a></li>
+                      <li><a href="#">Corporate Program</a></li>
+                      <li>
+                        <a href="#">Service 3</a>
+                        <ul>
+                          <li><a href="#">Service 1</a></li>
+                          <li><a href="#">Service 2</a></li>
+                          <li><a href="#">Service 3</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="blog.html" class="animsition-link">Blog</a></li> -->
+              <li><a href="{% url 'Guest:login' %}" class="animsition-link">Login</a></li>
+            </ul> <!-- .templateux-menu -->
+
+          </nav> <!-- .site-nav -->
+          
+
+        </div> <!-- .row -->
+      </div> <!-- .container -->
+    </header> <!-- .templateux-navba -->
+    
+    <div class="templateux-cover" style="background-image: url(/Guest/static/Main/images/hero_1.jpg);">
+      <div class="container">
+        <div class="row align-items-lg-center">
+
+          <div class="col-lg-6 order-lg-1">
+            <h1 class="heading mb-3 text-white" data-aos="fade-up">We Are Your Partners in <strong>Human Resource</strong></h1>
+            <p class="lead mb-5 text-white" data-aos="fade-up"  data-aos-delay="100">This website is designed to efficiently manage all HR operations within our organization.</p>
+
+          </div>
+          
+        </div>
+      </div>
+    </div> <!-- .templateux-cover -->
+
+    <div class="templateux-section pt-0 pb-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 templateux-overlap">
+            <div class="row">
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="media block-icon-1 d-block text-left">
+                  <div class="icon mb-3">
+                    <img src="Guest/static/Main/images/flaticon/svg/001-consultation.svg" alt="Image" class="img-fluid">
+                  </div>
+                  <div class="media-body">
+                    <h3 class="h5 mb-4">Manage Employees</h3>
+                    <p>A smart system that tracks, updates, and streamlines employee data with ease and accuracy.                    </p>
+                    <!-- <p><a href="#">Learn More</a></p> -->
+                  </div>
+                </div> <!-- .block-icon-1 -->
+              </div>
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="700">
+                <div class="media block-icon-1 d-block text-left">
+                  <div class="icon mb-3">
+                    <img src="Guest/static/Main/images/flaticon/svg/002-discussion.svg" alt="Image" class="img-fluid">
+                  </div>
+                  <div class="media-body">
+                    <h3 class="h5 mb-4">Recruitment</h3>
+                    <p>A seamless process that identifies, attracts, and hires the best talent for your organization.</p>
+                    <!-- <p><a href="#">Learn More</a></p> -->
+                  </div>
+                </div> <!-- .block-icon-1 -->
+              </div>
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="800">
+                <div class="media block-icon-1 d-block text-left">
+                  <div class="icon mb-3">
+                    <img src="Guest/static/Main/images/flaticon/svg/003-turnover.svg" alt="Image" class="img-fluid">
+                  </div>
+                  <div class="media-body">
+                    <h3 class="h5 mb-4">HR Efficiency</h3>
+                     <p>The HR system streamlines processes, ensuring smooth management.</p>
+                    <!--<p><a href="#">Learn More</a></p> -->
+                  </div>
+                </div> <!-- .block-icon-1 -->
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .templateux-section -->
+
+    <div class="templateux-section">
+
+      <div class="container"  data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-7">
+            <h2 class="mb-5">Our Company</h2>
+            <div class="owl-carousel wide-slider">
+              <div class="item">
+                <img src="Guest/static/Main/images/slider-1.jpg" alt="Free template by TemplateUX.com" class="img-fluid">
+              </div>
+              <div class="item">
+                <img src="Guest/static/Main/images/slider-2.jpg" alt="Free template by TemplateUX.com" class="img-fluid">
+              </div>
+              <div class="item">
+                <img src="Guest/static/Main/images/slider-3.jpg" alt="Free template by TemplateUX.com" class="img-fluid">
+              </div>
+            </div> <!-- .owl-carousel -->
+          </div>
+          <div class="col-lg-5 pl-lg-5">
+            <h2 class="mb-5">Services</h2>
+            <div class="accordion" id="accordionExample">
+
+
+              <div class="accordion-item">
+                <h2 class="mb-0 rounded mb-2">
+                  <!-- <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  </a> -->
+                </h2>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>We are IT Service providers, Tech solutions offered by our company help businesses innovate, improve productivity, and stay competitive. We provide tailored IT services, ensuring your organization runs smoothly with cutting-edge technology.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="mb-0 rounded mb-2">
+                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Software Development
+                  </a>
+                </h2>
+                
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>IT Support & Maintenance, Custom-built applications and software solutions tailored to meet specific business needs.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="mb-0 rounded mb-2">
+                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    IT Support & Maintenance
+                  </a>
+                </h2>
+                
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>Ongoing technical support, troubleshooting, and system maintenance to ensure smooth operations.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="mb-0 rounded mb-2">
+                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Cloud Solutions 
+                  </a>
+                </h2>
+
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>Scalable and secure cloud computing services, including data storage, backup, and virtual infrastructure management.</p>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .templateux-section -->
+
+    <div class="templateux-section bg-light py-5" id="templateux-counter-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md">
+            <div class="templateux-counter text-center">
+              <span class="templateux-number" data-number="98931">0</span>
+              <span class="templateux-label">Number of Clients</span>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="templateux-counter text-center">
+              <span class="templateux-number" data-number="197">0</span>
+              <span class="templateux-label">Number of Employees</span>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="templateux-counter text-center">
+              <span class="templateux-number" data-number="22">0</span>
+              <span class="templateux-label">Years Of Experience</span>
+            </div>
+          </div>    
+        </div>
+      </div>
+      
+    </div>
+  </div> <!-- .templateux-section -->
+
+  <div class="templateux-section pb-0">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col-12">
+          <h2>The Leadership</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+          <div class="staff" class="staff-img" style="background-image: url(Guest/static/Main/images/person_1.jpg);">
+            <a class="desc">
+              <h3>Erling Haaland</h3>
+              <span>CEO and Co-Founder</span>
+              <div class="parag">
+                <p>The best way to predict the future is to invent it.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+          <div class="staff" class="staff-img" style="background-image: url(Guest/static/Main/images/person_2.jpg);">
+            <a class="desc">
+              <h3>Ann Hernandes</h3>
+              <span>Human Resource Head</span>
+              <div class="parag">
+                <p>Technology is best when it brings people together.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+          <div class="staff" class="staff-img" style="background-image: url(Guest/static/Main/images/person_3.jpg);">
+            <a class="desc">
+              <h3>Rico Lewis</h3>
+              <span>Assistant Manager</span>
+              <div class="parag">
+                <p>It’s not about ideas. It’s about making ideas happen.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="templateux-section">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col-12">
+          <h2>Happy Customers</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8 testimonial-wrap">
+          <div class="quote">&ldquo;</div>
+          <div class="owl-carousel wide-slider-testimonial">
+            <div class="item">
+              <blockquote class="block-testomonial">
+                <p>&ldquo;We've been using this IT service for over a year, and it's been a game-changer for our business. The team is incredibly responsive and always finds innovative solutions to our challenges. Their dedication to ensuring our systems run smoothly has made a huge impact on our efficiency.&rdquo;</p>
+                <p><cite>Drew Wilson, CEO and Founder of CoLab</cite></p>
+              </blockquote>
+            </div>
+
+            <div class="item">
+              <blockquote class="block-testomonial">
+                <p>&ldquo;From the moment we partnered with this company, we noticed a significant improvement in our operations. Their expertise in technology is unmatched, and their support is always timely. We've seen a great increase in productivity thanks to their excellent service and guidance.&rdquo;</p>
+                <p><cite>Craig Smith, CEO and Founder of Slite</cite></p>
+              </blockquote>
+            </div>
+
+            <div class="item">
+              <blockquote class="block-testomonial">
+                <p>&ldquo;Our experience with this IT service has been exceptional. They have consistently exceeded our expectations with their attention to detail and customer-centric approach. Thanks to them, we've experienced smooth workflows and better security, boosting our overall business performance.&rdquo;</p>
+                <p><cite>Bob Robe, CEO and Founder of Fixer</cite></p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .container -->
+  </div> <!-- .templateux-section -->
+
+  <div class="templateux-section bg-light">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-12 text-center mb-5">
+          <h2>Our Services</h2>
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up">
+          <div class="media block-icon-1 d-block text-center">
+            <div class="icon mb-3">
+              <img src="Guest/static/Main/images/flaticon/svg/004-gear.svg" alt="Image" class="img-fluid">
+            </div>
+            <div class="media-body">
+              <h3 class="h5 mb-4">Cloud Computing Solutions</h3>
+              <p>Provides scalable and secure cloud infrastructure to enhance business flexibility and reduce costs.
+              </p>
+            </div>
+          </div> <!-- .block-icon-1 -->
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="media block-icon-1 d-block text-center">
+            <div class="icon mb-3">
+              <img src="Guest/static/Main/images/flaticon/svg/005-conflict.svg" alt="Image" class="img-fluid">
+            </div>
+            <div class="media-body">
+              <h3 class="h5 mb-4">Cybersecurity Services</h3>
+              <p>Protects your organization from cyber threats with advanced security measures and continuous monitoring.</p>
+            </div>
+          </div> <!-- .block-icon-1 -->
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="media block-icon-1 d-block text-center">
+            <div class="icon mb-3">
+              <img src="Guest/static/Main/images/flaticon/svg/006-meeting.svg" alt="Image" class="img-fluid">
+            </div>
+            <div class="media-body">
+              <h3 class="h5 mb-4">Software Development</h3>
+              <p>Custom software development to streamline business operations and enhance customer experiences.
+
+              </p>
+            </div>
+          </div> <!-- .block-icon-1 -->
+        </div>
+
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="media block-icon-1 d-block text-center">
+            <div class="icon mb-3">
+              <img src="Guest/static/Main/images/flaticon/svg/007-brainstorming.svg" alt="Image" class="img-fluid">
+            </div>
+            <div class="media-body">
+              <h3 class="h5 mb-4">Data Analytics </h3>
+              <p>Empowers businesses with data-driven insights to make informed decisions and improve performance.
+
+              </p>
+            </div>
+          </div> <!-- .block-icon-1 -->
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="media block-icon-1 d-block text-center">
+            <div class="icon mb-3">
+              <img src="Guest/static/Main/images/flaticon/svg/001-consultation.svg" alt="Image" class="img-fluid">
+            </div>
+            <div class="media-body">
+              <h3 class="h5 mb-4">IT Consulting </h3>
+              <p>Offers expert advice and strategic planning to optimize your IT environment and meet business goals.</p>
+            </div>
+          </div> <!-- .block-icon-1 -->
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="media block-icon-1 d-block text-center">
+            <div class="icon mb-3">
+              <img src="Guest/static/Main/images/flaticon/svg/009-brainstorming-2.svg" alt="Image" class="img-fluid">
+            </div>
+            <div class="media-body">
+              <h3 class="h5 mb-4">Network Solutions</h3>
+              <p>Designs and manages secure, reliable networks to ensure seamless connectivity and performance.</p>
+            </div>
+          </div> <!-- .block-icon-1 -->
+        </div>
+
+      </div>
+      <div class="row">
+
+        <div class="col-md-12 text-center" data-aos="fade-up" data-aos-delay="100">
+          <!-- <p><a href="#" class="btn btn-black py-3 px-4">More Features</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div> <!-- .templateux-section -->
+
+  <div class="container templateux-section">
+    <div class="row">
+      <div class="col-12 col-md-7 mx-auto text-center mb-5">
+        <!-- <h2>Our Blog</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit reiciendis dolore, facilis ipsam officiis quasi?</p>
+      </div>
+    </div>
+    <div class="d-flex flex-sm-row">
+      <a href="#" class="block-thumbnail-1 one-third" style="background-image: url(Guest/static/Main/images/slider-2.jpg); " data-aos="fade">
+        <div class="block-thumbnail-content">
+          <h2>When she reached the first</h2>
+          <span class="post-meta">June 18, 2020  &bullet; by Admin</span>
+        </div>
+      </a>
+      <a href="#" class="block-thumbnail-1 two-third" style="background-image: url(Guest/static/Main/images/slider-1.jpg); " data-aos="fade" data-aos-delay="100">
+        <div class="block-thumbnail-content">
+          <h2>Duden flows by their place</h2>
+          <span class="post-meta">July 17, 2020 &bullet; by Admin</span>
+        </div>
+      </a>
+    </div>
+    <div class="d-flex flex-column flex-sm-row">
+      <a href="#" class="block-thumbnail-1 two-third" style="background-image: url(Guest/static/Main/images/slider-3.jpg); " data-aos="fade" data-aos-delay="200">
+        <div class="block-thumbnail-content">
+          <h2>Italic Mountains</h2>
+          <span class="post-meta">March 18, 2020  &bullet; by Admin</span>
+        </div>
+      </a>
+      <a href="#" class="block-thumbnail-1 one-third" style="background-image: url(Guest/static/Main/images/slider-4.jpg); " data-aos="fade" data-aos-delay="300">
+        <div class="block-thumbnail-content">
+          <h2>Behind the word mountains</h2>
+          <span class="post-meta">March 22, 2020  &bullet; by Admin</span>
+        </div>
+      </a>
+    </div>
+  </div>  .templateux-section -->
+
+
+</div> <!-- .templateux-section -->
+ 
+
+
+<footer class="templateux-footer bg-light">
+  <div class="container">
+
+    <div class="row mb-5">
+      <div class="col-md-4 pr-md-5">
+        <div class="block-footer-widget">
+          <h3>About</h3>
+          <p>We are a leading IT solutions provider committed to delivering innovative technology services that empower businesses to thrive in the digital age.</p>
+        </div>
+      </div>
+   
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="block-footer-widget">
+              <h3>Learn More</h3>
+              <ul class="list-unstyled">
+                <li>To Know more</a></li>
+                <li>visit our</a></li>
+                <li>company website</a></li>
+                <li>"www.company.com"</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="block-footer-widget">
+              <h3>Support</h3>
+              <ul class="list-unstyled">
+                <li>FAQ</a></li>
+                <li>Contact Us</a></li>
+                <li>www.company.com</a></li>
+                <li>Ph: +11 23512415</a></li>
+              </ul>
+            </div>
+          </div>
+         
+
+          <div class="col-md-3">
+            <div class="block-footer-widget">
+              <h3>Connect With Us</h3>
+              <ul class="list-unstyled block-social">
+                <li><a href="https://www.facebook.com/" class="p-1"><span class="icon-facebook-square"></span></a></li>
+                <li><a href="https://x.com/" class="p-1"><span class="icon-twitter"></span></a></li>
+                <li><a href="https://github.com/" class="p-1"><span class="icon-github"></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div> <!-- .row -->
+   
+      </div>
+    </div> <!-- .row -->
+
+    <div class="row pt-5 text-center">
+      <div class="col-md-12 text-center"><p>
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        <!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="text-danger icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
+        Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+      </p></div> -->
+    </div> <!-- .row -->
+
+  </div>
+</footer> <!-- .templateux-footer -->
+
+
+</div> <!-- .js-animsition -->
+
+
+<script src="{% static 'Main/js/scripts-all.js' %}"></script>
+<script src="{% static 'Main/js/main.js' %}"></script>
+
+</body>
+</html>
